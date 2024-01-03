@@ -1,6 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
@@ -12,6 +13,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\D1tt0n.taskplanner.DataAccess.Abstractions2\D1tt0n.taskplanner.DataAccess.Abstractions2.csproj" />
+    <ProjectReference Include="..\D1tt0n.taskplanner.DataAccesss2\D1tt0n.taskplanner.DataAccesss2.csproj" />
+    <ProjectReference Include="..\D1tt0n.taskplanner.Domain.Logic\D1tt0n.taskplanner.Domain.Logic.csproj" />
     <ProjectReference Include="..\D1tt0n.taskplanner.Domain.Models\D1tt0n.taskplanner.Domain.Models.csproj" />
   </ItemGroup>
 

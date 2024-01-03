@@ -1,7 +1,10 @@
-﻿namespace D1tt0n.taskplanner.Domain.Models
+﻿using System;
+
+namespace D1tt0n.taskplanner.Domain.Models
 {
     public class WorkItem
     {
+        public Guid Id { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime DueDate { get; set; }
         public Priority Priority { get; set; }
@@ -12,7 +15,19 @@
 
         public override string ToString()
         {
-            return $"{Title}: due {DueDate.ToString("dd.MM.yyyy")}, {Priority.ToString().ToLower()} priority";
+            return $"{Title}: due {DueDate:dd.MM.yyyy}, {Priority.ToString().ToLower()} priority";
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+

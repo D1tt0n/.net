@@ -1,33 +1,29 @@
 ﻿
+using D1tt0n.taskplanner.DataAccess.Abstractions2;
 using D1tt0n.taskplanner.Domain.Models;
 
 namespace D1tt0n.taskplanner.Domain.Logic
 {
-
-
     public class SimpleTaskPlanner
     {
-        public WorkItem[] CreatePlan(WorkItem[] workItems)
+        private readonly IWorkItemsRepository _workItemsRepository;
+
+        public SimpleTaskPlanner(IWorkItemsRepository workItemsRepository)
         {
-            List<WorkItem> workItemList = new List<WorkItem>(workItems);
-            workItemList.Sort((a, b) =>
-            {
-                int priorityComparison = b.Priority.CompareTo(a.Priority);
-                if (priorityComparison != 0)
-                {
-                    return priorityComparison;
-                }
+            _workItemsRepository = workItemsRepository;
+        }
+        public List<WorkItem> CreatePlan(IEnumerable<WorkItem> tasks)
+        {
+            var pendingTasks = tasks.Where(task => !task.IsCompleted);
 
-                int dueDateComparison = a.DueDate.CompareTo(b.DueDate);
-                if (dueDateComparison != 0)
-                {
-                    return dueDateComparison;
-                }
-
-                return string.Compare(a.Title, b.Title, StringComparison.Ordinal);
-            });
-
-            return workItemList.ToArray();
+            var sortedTasks = pendingTasks
+                .OrderByDescending(task => task.Priority)
+                .ThenBy(task => task.DueDate)
+                .ThenBy(task => task.Title)
+                .ToList();
+            return sortedTasks;
         }
     }
 }
+
+

@@ -10,4 +10,9 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\D1tt0n.taskplanner.DataAccess.Abstractions\D1tt0n.taskplanner.DataAccess.Abstractions.csproj" />
+    <ProjectReference Include="..\D1tt0n.taskplanner.Domain.Models\D1tt0n.taskplanner.Domain.Models.csproj" />
+  </ItemGroup>
+
 </Project>
